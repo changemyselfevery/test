@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <body>
+        <p>你喜欢哪个城市?</p>
+        <ul id="city"><li id="bj" name="BeiJing">北京</li>
+            <li>上海</li>
+            <li id="dj">东京</li>
+            <li id="se">首尔</li>
+        </ul>
+        <br><br>
+        <p>你喜欢哪款单机游戏?</p>
+        <ul id="game">
+            <li id="rl">红警</li>
+            <li id="sk">实况</li>
+            <li>极品飞车</li>
+            <li>魔兽</li>
+        </ul>
+        
+        <br><br>
+        gender:
+        <input type="radio" name="gender" value="male"/>Male
+        <input type="radio" name="gender" value="female"/>Female
+        
+        <br><br>
+        name: <input type="text" name="username" value="atguigu"/>
+        
+        <script type="text/javascript">
+            window.onload=function(){
+                var city=document.getElementById("city");//获取city元素节点
+    //            alert(city.innerHTML);//打印city节点中的html内容
+                var game=document.getElementById("game");//获取game元素节点
+                alert("交换之前");
+                var temp=city.innerHTML;//创建中间变量
+                city.innerHTML=game.innerHTML;//把game的innerHtml赋值给city的innerHtml
+                game.innerHTML=temp;
+                //完成交换
+    
+            }
+        </script>
+</body>
+</html>

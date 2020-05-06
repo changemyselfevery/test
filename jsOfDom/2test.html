@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			alert("1");//页面是按着顺序执行的 
+			//一般把js代码写在window.onload方法中，执行该方法时，页面已经加载完毕，可以或得dom元素
+			window.onload=function(){
+				var b=document.getElementsByTagName('button')[0];
+				b.onclick=function(){
+					alert("hello world");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button type="button">点我</button>
+	</body>
+</html>

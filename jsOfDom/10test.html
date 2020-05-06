@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+<ul id="city"><li id="bj" name="BeiJing">北京</li>
+    <li>上海</li>
+    <li>东京</li>
+    <li>首尔</li>
+</ul>
+<script>
+    window.onload=function(){
+        alert("运行");
+        // 创建一个元素
+        var linode=document.createElement("li");
+        //创建一个文本节点 比如扬州
+        var textnode=document.createTextNode("厦门");
+        linode.appendChild(textnode);
+
+        //把linode加入到首尔的后面
+        var city=document.getElementById('city');
+        city.appendChild(linode);
+        alert("运行后");
+    }
+</script>
+<br>
+<p>你喜欢哪款单机游戏?</p>
+<ul id="game">
+    <li id="rl">红警</li>
+    <li>实况</li>
+    <li>极品飞车</li>
+    <li>魔兽</li>
+</ul>
+</body>
+</html>

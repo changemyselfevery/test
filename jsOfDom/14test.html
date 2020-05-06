@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+<ul id="city"><li id="bj" name="BeiJing">北京</li>
+    <li>上海</li>
+    <li>东京</li>
+    <li>首尔</li>
+</ul>
+
+<br><br>
+<p>你喜欢哪款单机游戏?</p>
+<ul id="game">
+    <li id="rl">红警</li>
+    <li>实况</li>
+    <li>极品飞车</li>
+    <li>魔兽</li>
+</ul>
+</body>
+<script type="text/javascript">
+    window.onload=function(){
+
+        //节点的双向替换
+        var bj=document.getElementById("bj");//得到元素节点 北京
+        var rl=document.getElementById("rl");//得到元素节点 红警
+        //得到各自的父节点
+        var bjpaternal=document.getElementById("city");
+        var rlpaternal=document.getElementById("game");
+        //克隆一个中间节点  这样做是因为  红警替换为北京的时候(北京覆盖红警)，确保北京不消失  因为下一步还要把北京替换为红警  所以使用克隆
+        var tag=bj.cloneNode(true);//为true时  表示可以克隆
+        //进行互换
+        alert("把红警变换为北京");
+        rlpaternal.replaceChild(tag,rl);//操作的是克隆的节点  保证北京在覆盖红警之后不消失
+        alert("把北京变换为红警");
+        bjpaternal.replaceChild(rl,bj);//把红警覆盖  变为北京
+    }
+</script>
+</html>

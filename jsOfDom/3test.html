@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		//获取节点
+		window.onload=function(){
+			var v1=document.getElementsByTagName('li');
+			//根据html文档标签米名称 获得对应节点的集合
+			alert(v1.length);
+			var v2=document.getElementById('city');//根据id获取对应元素
+			var linode=v2.getElementsByTagName("li");//获取city节点的子节点li的集合
+			//这是获取指定名子节点的一种
+			alert(linode.length);
+			var v3=document.getElementsByName("username");//根据name属性获取节点集合
+			alert(v3.length);
+
+			//读取属性 
+			//获取元素节点
+			var v=document.getElementById('name');
+			//读取指定value值
+			alert(v.value);
+			v.value="不错你大爷";
+
+		}
+	</script>
+	<body>
+		<p>你喜欢哪一个城市？</p>
+		<ul id="city">
+			<li id="bj" name="Beijing">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		<br>
+		<p>你最喜欢哪几款单机游戏</p>
+		<ul id="game">
+			<li id="rl">红警</li>
+			<li>实况</li>
+			<li>极品飞车</li>
+			<li>魔兽</li>
+		</ul>
+		<br>
+		name:<input type="text" name="username" id="name" value="哎呦不错喔">
+		<!-- name:<input type="text" name="username" id="name" value="atguigu" /> -->
+	</body>
+</html>

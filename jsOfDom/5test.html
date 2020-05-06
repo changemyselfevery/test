@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你最喜欢的城市是</p>
+    <ul id="city">
+        <li id="bj" name="Bwijing">北京</li>
+        <li>上海</li>
+        <li>东京</li>
+        <li>首尔</li>
+    </ul>
+</body>
+    <script>
+        var v=document.getElementById('city');
+        //通过ChildNodes方法得到所有子节点
+        var v2=v.childNodes;
+        alert(v2);//打印v2的类型
+        alert(v2.length);
+        //这是因为文本节点，也就是空白也是一个节点
+
+    </script>
+</html>

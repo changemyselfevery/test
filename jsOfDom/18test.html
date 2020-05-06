@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+    <ul id="city"><li id="bj" name="BeiJing">北京</li>
+        <li>上海</li>
+        <li id="dj">东京</li>
+        <li id="se">首尔</li>
+    </ul>
+    <br><br>
+    <p>你喜欢哪款单机游戏?</p>
+    <ul id="game">
+        <li id="rl">红警</li>
+        <li id="sk">实况</li>
+        <li>极品飞车</li>
+        <li>魔兽</li>
+    </ul>
+    
+    <br><br>
+    gender:
+    <input type="radio" name="gender" value="male"/>Male
+    <input type="radio" name="gender" value="female"/>Female
+    
+    <br><br>
+    name: <input type="text" name="username" value="atguigu"/>
+    
+    </body>
+    <script type="text/javascript">
+        window.onload=function(){
+
+            alert("把红警插入到北京之前");
+            //insertBefore(a,b) 把a查到b的前面
+            //获取北京这个节点
+            var bjnode=document.getElementById("bj");
+            //获取红警节点
+            var hj=document.getElementById("rl");
+            //获取 北京的父类节点city  因为这是往city的子节点中插入节点
+            var city=document.getElementById("city");
+            city.insertBefore(hj,bjnode);
+//运行之后 把红警移动到了北京之前  实现了移动
+    }
+    </script>
+</html>

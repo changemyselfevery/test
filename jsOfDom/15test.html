@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+    <ul id="city"><li id="bj" name="BeiJing">北京</li>
+        <li>上海</li>
+        <li>东京</li>
+        <li>首尔</li>
+    </ul>
+    
+    <br><br>
+    <p>你喜欢哪款单机游戏?</p>
+    <ul id="game">
+        <li id="rl">红警</li>
+        <li>实况</li>
+        <li>极品飞车</li>
+        <li>魔兽</li>
+    </ul>
+    gender:
+ <input type="radio" name="gender" value="male"/>Male
+ <input type="radio" name="gender" value="female"/>Female
+
+<br><br>
+name: <input type="text" name="username" value="atguigu"/>
+ <script type="text/javascript">
+           window.onload=function(){
+               //分别得到各自的li节点
+               var city=document.getElementById("city");
+              var game=document.getElementById("game");
+              var licity=city.getElementsByTagName("li");
+              var ligame=game.getElementsByTagName("li");
+              //使用循环进行互换
+              for(var i=0;i<licity.length;i++){
+                  alert(i);
+                  changeshow(licity[i],ligame[i])
+              }
+    
+    
+            }
+            //先定义一个互换的函数
+            function changeshow(node1,node2){
+                //找到各自对应的父节点
+                var node1parent=node1.parentNode;
+                var node2parent=node2.parentNode;
+                //如果父节点存在  那么可以进行互换
+                if(node1parent&&node2parent){
+                    //互换之前 需要完成节点的克隆 克隆任何一个都行 参数为true表示允许克隆
+                    var clone=node1.cloneNode(true);
+                    //使用父节点 完成互换
+                    node2parent.replaceChild(clone,node2);
+                    node1parent.replaceChild(node2,node1);
+                }
+            }
+        </script>
+</body>
+</html>

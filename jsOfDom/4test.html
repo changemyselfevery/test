@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="city">
+        <li id="bj" name="Bwijing">北京</li>
+        <li>上海</li>
+        <li>东京</li>
+        <li>首尔</li>
+    </ul>
+</body>
+    <script>
+        //读取文本节点
+        var v=document.getElementById("bj");
+        //通过firstchild方法定位文本节点 因为id为bj的节点 只有一个子节点 北京
+        var v2=v.firstChild;//定位到文本节点
+        alert(v2);//但是这里只能输出文本类型
+        alert(v2.nodeValue); //通过nodeValue输出节点内容 北京
+        v2.nodeValue="改变的北京";
+    </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+    <ul id="city"><li id="bj" name="BeiJing">北京</li>
+        <li>上海</li>
+        <li>东京</li>
+        <li>首尔</li>
+    </ul>
+    
+    <br><br>
+    <p>你喜欢哪款单机游戏?</p>
+    <ul id="game">
+        <li id="rl">红警</li>
+        <li>实况</li>
+        <li>极品飞车</li>
+        <li>魔兽</li>
+    </ul>
+    name <input type="text" name="username" id="name" value="哎呦不错呦">
+</body>
+    <script>
+        var v=document.getElementById("bj");
+        alert(v.nodeName);
+        alert(v.nodeType);
+        alert(v.nodeValue);
+        //元素节点的nodeValue始终为null
+
+        var b=document.getElementById('name');
+        alert(b.nodeType); //1表示元素节点
+        var b2=b.getAttributeNode("name");//获取属性节点
+        alert(b2.nodeType);
+        var v3=document.getElementById('name').getAttributeNode("name");
+        alert(v3.nodeType);
+
+    </script>
+</html>

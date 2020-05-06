@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button type="button">点我</button>
+	</body>
+	<script type="text/javascript">
+		//当整个html文件加载成功之后触发window.onload事件
+		window.onload=function(){
+			var btn=document.getElementsByTagName("button")[0];
+			btn.onclick=function(){
+				alert("hello world");
+			}
+		}
+	</script>
+</html>

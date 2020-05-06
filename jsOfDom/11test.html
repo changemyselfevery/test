@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+<ul id="city"><li id="bj" name="BeiJing">北京</li>
+    <li>上海</li>
+    <li>东京</li>
+    <li>首尔</li>
+</ul>
+<script>
+    window.onload=function(){
+        var v1=document.getElementById('bj');//获取li为北京的节点元素
+        var v2=document.getElementsByTagName('li')[1];//获取为东京的li
+        if(v1.id){
+            alert("v1节点存在id属性");
+        }else{
+            alert("不存在id属性");
+        }
+
+        if(v2.id){
+            alert("v2存在id属性");
+        }else{
+            alert("v2不存在id属性");
+        }
+    }
+</script>
+</body>
+</html>

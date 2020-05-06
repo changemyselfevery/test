@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<>
+   
+        <p>你喜欢哪个城市?</p>
+        <ul id="city">
+            <li id="bj" name="BeiJing">北京</li>
+            <li>上海</li>
+            <li>东京</li>
+            <li>首尔</li>
+        </ul>
+        
+        <br><br>
+        <p>你喜欢哪款单机游戏?</p>
+        <ul id="game">
+            <li id="rl">红警</li>
+            <li>实况</li>
+            <li>极品飞车</li>
+            <li>魔兽</li>
+        </ul>
+        
+        <br><br>
+        gender:
+        <input type="radio" name="gender" value="male"/>Male
+        <input type="radio" name="gender" value="female"/>Female
+        
+        <br><br>
+        name: <input type="text" name="username" value="atguigu"/>
+        <script type="text/javascript">
+            window.onload=function(){
+    
+                //获得所有的li节点
+                var linodes=document.getElementsByTagName("li");
+                //为每一个li节点设置单击事件  使用循环的方式
+                for(var i=0;i<linodes.length;i++){
+                    linodes[i].onclick=function(){//当用户点击相应的文本的时候  会首先弹出对话框  如果点击确定  那么执行删除 取消则什么也不做
+                        var flag=confirm("确定删除"+ this.childNodes[0].nodeValue +"的信息吗");//因为li节点只有一个子节点
+                        if(flag){
+                            //执行删除
+                            this.parentNode.removeChild(this);
+                        }
+                    }
+                }
+    
+            }
+    
+        </script>
+</body>
+</html>

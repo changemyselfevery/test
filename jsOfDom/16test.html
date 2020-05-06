@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+    <ul id="city">
+        <li id="bj" name="BeiJing">北京</li>
+        <li>上海</li>
+        <li>东京</li>
+        <li>首尔</li>
+    </ul>
+    
+    <br><br>
+    <p>你喜欢哪款单机游戏?</p>
+    <ul id="game">
+        <li id="rl">红警</li>
+        <li>实况</li>
+        <li>极品飞车</li>
+        <li>魔兽</li>
+    </ul>
+    
+    <br><br>
+    gender:
+    <input type="radio" name="gender" value="male"/>Male
+    <input type="radio" name="gender" value="female"/>Female
+    
+    <br><br>
+    name: <input type="text" name="username" value="atguigu"/>
+    <script type="text/javascript">
+        window.onload=function(){
+            //节点的删除
+            alert("确定删除北京")
+            var bj=document.getElementById("bj");
+            //得到它的父节点 然后删除
+            var parent=bj.parentNode;
+            parent.removeChild(bj);//连缀方式：bj.parentNode.removeChild(bj);
+            var b=confirm("这是一个对话框,返回值是boolean");
+            alert(b);
+        }
+    </script>
+    </body>
+</html>

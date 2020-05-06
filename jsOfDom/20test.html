@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Untitled Document</title>
+        <script type="text/javascript">
+
+            window.onload = function(){
+
+                //1. 为 #province 添加 onchange 响应函数
+                document.getElementById("province").onchange = function(){
+
+                    //1.1 把 #city 节点除第一个子节点外都移除.
+                    var cityNode = document.getElementById("city");
+                    var cityNodeOptions = cityNode.getElementsByTagName("option");
+
+                    var len = cityNodeOptions.length;
+                    for(var i =1; i < len; i++){
+                        cityNode.removeChild(cityNodeOptions[1]);//每次都清除第一个内容  除了“请选择”之外的内容最后都会被清除
+                    }
+
+                    var provinceVal = this.value;
+                    if(provinceVal == ""){//如果用户选择的第一列中选择了 “请选择” 这个列 那么就不在执行下面的内容 因为加载不到任何内容
+                        return;
+                    }
+
+                    //2. 加载 cities.xml 文件. 得到代表给文档的 document 对象
+                    var xmlDoc = parseXml("cities.xml");
+
+
+                    //3. 在 cities.xml 文档中查找和选择的省匹配的 province 节点.
+
+                    //直接使用 XPath 技术查找 XML 文档中匹配的节点.
+                    var provinceEles = xmlDoc.selectNodes("//province[@name='"
+                                                   + provinceVal + "']");
+                    /*  另外一种方式  逐个比较  然后获得对应的节点
+                    var prochild=xmlDoc.getElementsByTagName("province");
+                    //alert(prochild.length);
+                    for(var i=0;i<prochild.length;i++){
+                        //alert(prochild[i].getAttributeNode("name").value);
+                        if(prochild[i].getAttributeNode("name").nodeValue==this.value){
+                            alert("a1");
+                            var xxxx=prochild[i];
+                            alert("a2");
+                            break;
+                        }
+                    }
+                    var cityNodes=xxxx.getElementsByTagName("city");
+                    */
+
+                    //4. 再得到 province 节点的所有的 city 子节点
+                    var cityNodes = provinceEles[0].getElementsByTagName("city");
+
+                    //5. 遍历 city 子节点, 得到每一个 city 子节点的文本值
+                    for(var i = 0; i < cityNodes.length; i++){
+                        //6. 利用得到的文本值创建 option 节点
+                        //<option>cityName</option>
+                        var cityText = cityNodes[i].firstChild.nodeValue;
+                        var cityTextNode = document.createTextNode(cityText);
+                        var optionNode = document.createElement("option");
+                        optionNode.appendChild(cityTextNode);
+
+                        //7. 并把 6 创建的 option 节点添加为 #city 的子节点.
+                        cityNode.appendChild(optionNode);
+                    }
+
+                }
+
+                //js 解析 xml 文档的函数, 只支持 ie
+                function parseXml(fileName){
+                    //IE 内核的浏览器
+                    if (true) {//(window.ActiveXObject)的作用，用来判断浏览器是否支持ActiveX控件   使用ie功能可以实现 使用360没反应
+                        //创建 DOM 解析器
+                        var doc = new ActiveXObject("Microsoft.XMLDOM");
+                        doc.async = "false";
+                        //加载 XML 文档, 获取 XML 文档对象
+                        doc.load(fileName);
+                        return doc;
+                    }
+                }
+
+//                function parseXml(fileName)
+//                {alert("a0");
+//                    //IE 内核的浏览器
+//                    if (window.ActiveXObject)
+//                    {
+//                        alert("a1");
+//                        // 创建 DOM 解析器
+//                        var doc = new ActiveXObject("Microsoft.XMLDOM");
+//                        alert("a2");
+//                        doc.async = "false";
+//                        // 加载 XML 文档 , 获取 XML 文档对象
+//                        alert("a3");
+//                        doc.load(fileName);
+//                        alert("a4");
+//                        return doc;
+//                    }
+//                    //Mozilla 浏览器
+//                    else if (window.DOMParser)
+//                    {
+//                        // 创建 DOM 解析器
+//                        var p = new DOMParser();
+//                        // 创建 DOM 解析器
+//                        return p.parseFromString(fileName, "text/xml");
+//                    }
+//                    else
+//                    {
+//                        return false;
+//                    }
+//                }
+
+            }
+
+        </script>
+
+    </head>
+    <body>
+        <select id="province">
+            <option value="">请选择...</option>
+            <option value="河北省">河北省</option>
+            <option value="辽宁省">辽宁省</option>
+            <option value="山东省">山东省</option>
+        </select>
+        
+        <select id="city"><option value="">请选择...</option></select>
+    </body>
+</html>

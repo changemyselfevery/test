@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+    <ul id="city"><li id="bj" name="BeiJing">北京</li>
+        <li>上海</li>
+        <li>东京</li>
+        <li>首尔</li>
+    </ul>
+    <script>
+        //任何节点都有nodename nodeType nodeValue三个属性
+        var v=document.getElementById('bj');
+        var v2=v.firstChild;//获取文本节点 也可以使用lastChild也可以
+        alert(v2.nodeName);
+        alert(v2.nodeType);//文本节点类型 打印3
+        alert(v2.nodeValue);//文本值 北京
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>你喜欢哪个城市?</p>
+<ul id="city">
+    <li id="bj">北京</li>
+    <li>上海</li>
+    <li>东京</li>
+    <li>首尔</li>
+</ul>
+ 
+<br><br>
+<p>你喜欢哪款单机游戏?</p>
+<ul id="game">
+    <li id="rl">红警</li>
+    <li>实况</li>
+    <li>极品飞车</li>
+    <li>魔兽</li>
+</ul>
+ 
+<br><br>
+ 
+<form action="text5.html" name="myform">
+ 
+    <input type="radio" name="type" value="city">城市
+    <input type="radio" name="type" value="game">游戏
+ 
+    name: <input type="text" name="name"/>
+ 
+    <input type="submit" value="Submit" id="submit"/>
+ 
+</form>
+    <script type="text/javascript">
+        window.onload=function(){
+            //需求: 点击 submit 按钮时,　检查是否选择 type, 若没有选择给出提示: "请选择类型";
+            //     检查文本框中是否有输入(可以去除前后空格), 若没有输入,则给出提示: "请输入内容";
+            //若检查都通过, 则在相应的 ul 节点中添加对应的 li 节点
+
+            //一。先获取对应的按钮
+            var submit=document.getElementById("submit");
+            //然后为他绑定onclick事件
+            submit.onclick=function(){
+                //获得单选节点 通过type属性获得
+                var radionode=document.getElementsByName("type");
+                //循环遍历  得到选择的某个按钮的value值
+                var radionodetype =null;
+                for(var i=0;i<radionode.length;i++){
+                    if(radionode[i].checked){//存在checked属性
+                        radionodetype=radionode[i].value;//获得选中的按钮的value值
+                        break;
+                    }
+                }
+                //判断是否 radionodetype的值仍然为空  为空则 说明用户没单击任何的按钮  弹窗提示  然后停止
+                if(radionodetype==null){
+                    alert("请选择类型。。。。。。");
+                    return false;
+                }
+
+                //二。获得元素节点 是它的子节点是文本  通过name属性
+                var textnode=document.getElementsByName("name")[0];
+               // alert(textnode);
+                //得到输入的文本内容
+                var textcontext=textnode.value;
+               // alert(textcontext);
+
+                //正则表达式  去掉前后的空格
+                var zheze=/^\s*|\s*$/g;
+                textcontext=textcontext.replace(zheze,"");
+                //使文本框中的内容也去掉前后空格  不然在下次输入的时候光标不是在文本框的开始位置(主要还是没有实现跳页 所以数据会一直到页面上  如果再次条到本页  那么上一次输入的数据将消失)
+                textnode.value=textcontext;
+                if(textcontext==""){
+                    alert("输入的内容不能为空 或者是空格");
+                    return false;
+                }
+
+
+                //创建元素节点，为之后的节点插入做准备
+                var linode=document.createElement("li");
+                //创建文本节点，
+                var textnode=document.createTextNode(textcontext)//参数就是用户输入的值  去掉空格之后 不用担心内容为"" 如果为“” 那么代码根本执行不到这里
+                //把该文本节点的内容设置进上面创建的元素节点中
+                linode.appendChild(textnode);
+
+                //根据选择的类型radionodetype的值 先得到相应的li节点集合
+                var lilist=document.getElementById(radionodetype);
+                //为集合添加一条元素节点<li><li>
+                lilist.appendChild(linode);
+
+
+                return false;//即使用户输入的内容都合法 也不让其跳页
+            }
+        }
+
+    </script>
+</body>
+</html>
